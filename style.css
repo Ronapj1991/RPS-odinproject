@@ -1,0 +1,86 @@
+* {
+    margin: 0;
+    padding: 0;
+    overflow: hidden;
+}
+
+body {
+    height: 100vh;
+    width: 100vw;
+}
+
+p {
+    text-align: center;
+}
+
+.main-container {
+    width: 80%;
+    height: 80%;
+    border: 1px solid black;
+    margin: 0 auto;
+    display: flex;
+    justify-content: center;
+}
+
+.left {
+    width: 50%;
+    background-color: rgb(40, 63, 191);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+}
+
+.right {
+    width: 50%;
+    background-color: rgb(40, 63, 191);
+    display: flex;
+}
+
+.playGame {
+    font-size: 1.2em;
+    padding: 10px;
+    display: flex;
+    flex-direction: column;
+}
+
+.rock {
+    margin-top: 20px;
+    font-size: 1.2em;
+    padding: 23px;
+}
+
+.paper {
+    margin-top: 20px;
+    font-size: 1.2em;
+    padding: 20px;
+}
+
+.scissors {
+    margin-top: 20px;
+    font-size: 1.2em;
+    padding: 11px;
+    padding-top: 20px;
+    padding-bottom: 20px;
+    margin-bottom: 30px;
+}
+
+.output {
+    height: 90%;
+    width: 95%;
+    margin: auto;
+    border: 2px solid black;
+    background-color: whitesmoke;
+}
+
+@media (max-height: 320px) {
+    .left > button {
+       font-size: 0.8em;
+       margin: 10px;
+       padding: 5px;
+    }
+
+    p {
+        font-size: 0.7em;
+    }
+}

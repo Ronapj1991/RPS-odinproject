@@ -1,21 +1,31 @@
 const CHOICES = ["rock", "paper", "scissors"];
+const playGameBtn = document.querySelector(".playGame");
+const rockBtn = document.querySelector(".rock");
+const paperBtn = document.querySelector(".paper");
+const scissorsBtn = document.querySelector(".scissors");
+const output = document.querySelector(".output");
+
+const WINMESSAGE = document.createElement('p')
+WINMESSAGE.innerText = "You are the champion!";
+WINMESSAGE.style.paddingTop = "5px";
+
+const LOSEMESSAGE = document.createElement('p')
+LOSEMESSAGE.innerText = "Too bad! Try again next time";
+LOSEMESSAGE.style.paddingTop = "5px";
+
+const FINALMESSAGE = document.createElement('p')
+FINALMESSAGE.innerText = "Please Referesh the page to reset the app";
+FINALMESSAGE.style.paddingTop = "10px";
+
+
 let playerScore = 0;
 let computerScore = 0;
-
+let playerChoice= "";
+let playBtnText = document.createElement('p');
 
 function getComputerChoice() {
     let randomIndex = Math.floor(Math.random() * 3);
     return CHOICES[randomIndex];
-}
-
-function getPlayerChoice() {
-    let playerChoice = prompt("Enter your choice:\nrock\npaper\nscissors");
-    playerChoice = playerChoice.toLowerCase();
-    while(!CHOICES.includes(playerChoice)) {
-        playerChoice = prompt("Please type your choice carefully:\nrock\npaper\nscissors");
-        if (CHOICES.includes(playerChoice)) break;
-    }
-    return playerChoice
 }
 
 function playRound(computer, player) {
@@ -34,23 +44,121 @@ function playRound(computer, player) {
     }
 }
 
+rockBtn.disabled = true;
+paperBtn.disabled = true;
+scissorsBtn.disabled = true;
 
-function game() {
-    console.log("Welcome to the Rock Paper Scissors Game!");
-    while(true) {
-        let computer = getComputerChoice();
-        let player = getPlayerChoice();
-        console.log(playRound(computer, player))
-        console.log(`You: ${playerScore}, Computer:${computerScore}`)
-        
+
+playGameBtn.addEventListener("click", (e) => {
+    playGameBtn.disabled = true;
+    rockBtn.disabled = false;
+    paperBtn.disabled = false;
+    scissorsBtn.disabled = false;
+
+    playerScore = 0;
+    computerScore = 0;
+
+    let welcome1 = document.createElement('p');
+    welcome1.innerText = "Welcome To Rock Paper Scissors Game!";
+
+    let welcome2 = document.createElement('p');
+    welcome2.innerText = "If you reach 5 points before the computer does, you win! Goodluck!";
+    welcome2.style.paddingTop = "5px";
+
+    output.appendChild(welcome1);
+    output.appendChild(welcome2);
+
+    let playerUIScore = document.createElement('p');
+    let computerUIScore = document.createElement('p');
+
+    rockBtn.addEventListener("click", () => {
+        playerChoice = CHOICES[0];
+        playBtnText.innerText = playRound(getComputerChoice(), playerChoice);
+        playBtnText.style.paddingTop = "5px"
+        playerUIScore.innerText = `You: ${playerScore}`;
+        playerUIScore.style.paddingTop = "5px"
+        computerUIScore.innerText = `Computer: ${computerScore}`;
+
+        output.appendChild(playBtnText);
+        output.appendChild(playerUIScore);
+        output.appendChild(computerUIScore);
+
         if (playerScore === 5) {
-            console.log("You are the champion!");
-            break;
+            output.appendChild(WINMESSAGE)
+            output.appendChild(FINALMESSAGE)
+            rockBtn.disabled = true;
+            paperBtn.disabled = true;
+            scissorsBtn.disabled = true;
         }
-        
+
         if (computerScore === 5) {
-            console.log("Too bad! Try again next time");
-            break;
+           output.appendChild(LOSEMESSAGE)
+           output.appendChild(FINALMESSAGE)
+           rockBtn.disabled = true;
+           paperBtn.disabled = true;
+           scissorsBtn.disabled = true;
         }
-    }
-}
+    })
+    
+    paperBtn.addEventListener("click", () => {
+
+        playerChoice = CHOICES[1];
+        console.log(playRound(getComputerChoice(), playerChoice))
+        playBtnText.innerText = playRound(getComputerChoice(), playerChoice);
+        playBtnText.style.paddingTop = "5px"
+        playerUIScore.innerText = `You: ${playerScore}`;
+        playerUIScore.style.paddingTop = "5px"
+        computerUIScore.innerText = `Computer: ${computerScore}`;
+
+        output.appendChild(playBtnText);
+        output.appendChild(playerUIScore);
+        output.appendChild(computerUIScore);
+
+        if (playerScore === 5) {
+            output.appendChild(WINMESSAGE)
+            output.appendChild(FINALMESSAGE)
+            rockBtn.disabled = true;
+            paperBtn.disabled = true;
+            scissorsBtn.disabled = true;
+        }
+
+        if (computerScore === 5) {
+           output.appendChild(LOSEMESSAGE)
+           output.appendChild(FINALMESSAGE)
+           rockBtn.disabled = true;
+           paperBtn.disabled = true;
+           scissorsBtn.disabled = true;
+        }
+    })
+    
+    scissorsBtn.addEventListener("click", () => {
+        playerChoice = CHOICES[2];
+        console.log(playRound(getComputerChoice(), playerChoice))
+        playBtnText.innerText = playRound(getComputerChoice(), playerChoice);
+        playBtnText.style.paddingTop = "5px"
+        playerUIScore.innerText = `You: ${playerScore}`;
+        playerUIScore.style.paddingTop = "5px"
+        computerUIScore.innerText = `Computer: ${computerScore}`;
+
+        output.appendChild(playBtnText);
+        output.appendChild(playerUIScore);
+        output.appendChild(computerUIScore);
+
+        if (playerScore === 5) {
+            output.appendChild(WINMESSAGE)
+            output.appendChild(FINALMESSAGE)
+            scissorsBtn.disabled = true;
+            rockBtn.disabled = true;
+            paperBtn.disabled = true;
+            scissorsBtn.disabled = true;
+        }
+
+        if (computerScore === 5) {
+           output.appendChild(LOSEMESSAGE)
+           output.appendChild(FINALMESSAGE)
+           rockBtn.disabled = true;
+           paperBtn.disabled = true;
+           scissorsBtn.disabled = true;
+        }
+    })
+})
