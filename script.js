@@ -101,13 +101,12 @@ playGameBtn.addEventListener("click", (e) => {
     })
     
     paperBtn.addEventListener("click", () => {
-
         playerChoice = CHOICES[1];
         console.log(playRound(getComputerChoice(), playerChoice))
         playBtnText.innerText = playRound(getComputerChoice(), playerChoice);
         playBtnText.style.paddingTop = "5px"
         playerUIScore.innerText = `You: ${playerScore}`;
-        playerUIScore.style.paddingTop = "5px"
+        playerUIScore.style.paddingTop = "5px";
         computerUIScore.innerText = `Computer: ${computerScore}`;
 
         output.appendChild(playBtnText);
@@ -115,16 +114,16 @@ playGameBtn.addEventListener("click", (e) => {
         output.appendChild(computerUIScore);
 
         if (playerScore === 5) {
-            output.appendChild(WINMESSAGE)
-            output.appendChild(FINALMESSAGE)
+            output.appendChild(WINMESSAGE);
+            output.appendChild(FINALMESSAGE);
             rockBtn.disabled = true;
             paperBtn.disabled = true;
             scissorsBtn.disabled = true;
         }
 
         if (computerScore === 5) {
-           output.appendChild(LOSEMESSAGE)
-           output.appendChild(FINALMESSAGE)
+           output.appendChild(LOSEMESSAGE);
+           output.appendChild(FINALMESSAGE);
            rockBtn.disabled = true;
            paperBtn.disabled = true;
            scissorsBtn.disabled = true;
