@@ -104,7 +104,6 @@ playGameBtn.addEventListener("click", (e) => {
     
     paperBtn.addEventListener("click", (e) => {
         playerChoice = CHOICES[1];
-        console.log(playRound(getComputerChoice(), playerChoice))
         playBtnText.innerText = playRound(getComputerChoice(), playerChoice);
         playBtnText.style.paddingTop = "5px"
         playerUIScore.innerText = `You: ${playerScore}`;
@@ -136,7 +135,6 @@ playGameBtn.addEventListener("click", (e) => {
     
     scissorsBtn.addEventListener("click", (e) => {
         playerChoice = CHOICES[2];
-        console.log(playRound(getComputerChoice(), playerChoice))
         playBtnText.innerText = playRound(getComputerChoice(), playerChoice);
         playBtnText.style.paddingTop = "5px"
         playerUIScore.innerText = `You: ${playerScore}`;
