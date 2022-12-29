@@ -32,12 +32,12 @@ function playRound(computer, player) {
     if (computer === CHOICES[0] && player === CHOICES[2] ||
         computer === CHOICES[1] && player === CHOICES[0] ||
         computer ===  CHOICES[2] && player === CHOICES[1]) {
-        computerScore++;
+        computerScore += 1;
         return `You lose! ${computer} beats ${player}`
     } else if (player === CHOICES[0] && computer === CHOICES[2] ||
                player === CHOICES[1] && computer === CHOICES[0] ||
                player === CHOICES[2] && computer === CHOICES[1]) {
-        playerScore++;
+        playerScore += 1;
         return "You win!"
     } else {
         return "It's a tie!";
@@ -98,9 +98,11 @@ playGameBtn.addEventListener("click", (e) => {
            paperBtn.disabled = true;
            scissorsBtn.disabled = true;
         }
+
+        e.stopPropagation()
     })
     
-    paperBtn.addEventListener("click", () => {
+    paperBtn.addEventListener("click", (e) => {
         playerChoice = CHOICES[1];
         console.log(playRound(getComputerChoice(), playerChoice))
         playBtnText.innerText = playRound(getComputerChoice(), playerChoice);
@@ -128,9 +130,11 @@ playGameBtn.addEventListener("click", (e) => {
            paperBtn.disabled = true;
            scissorsBtn.disabled = true;
         }
+
+        e.stopPropagation()
     })
     
-    scissorsBtn.addEventListener("click", () => {
+    scissorsBtn.addEventListener("click", (e) => {
         playerChoice = CHOICES[2];
         console.log(playRound(getComputerChoice(), playerChoice))
         playBtnText.innerText = playRound(getComputerChoice(), playerChoice);
@@ -159,5 +163,9 @@ playGameBtn.addEventListener("click", (e) => {
            paperBtn.disabled = true;
            scissorsBtn.disabled = true;
         }
+    
+        e.stopPropagation()
     })
+
+    e.stopPropagation()
 })
